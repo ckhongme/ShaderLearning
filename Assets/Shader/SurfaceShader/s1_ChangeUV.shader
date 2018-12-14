@@ -48,6 +48,7 @@
 			//恢复纹理位置
 			uv += float2(0.5, 0.5);
 
+			//2D纹理采样
 			fixed4 color = tex2D(_MainTex, uv);
 			o.Alpha = color.a;
 			o.Albedo = color.rgb;
