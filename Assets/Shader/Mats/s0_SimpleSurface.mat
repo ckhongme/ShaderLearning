@@ -6,8 +6,8 @@ Material:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: s1_ChangeUV
-  m_Shader: {fileID: 4800000, guid: 2d004f4e08ee046419fcf4c515660100, type: 3}
+  m_Name: s0_SimpleSurface
+  m_Shader: {fileID: 4800000, guid: 076ae73ec5510474abe89dd34c7247af, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
@@ -55,7 +55,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
-    - _Angle: 0
+    - _Angle: 0.27
     - _BumpScale: 1
     - _Cutoff: 0.5
     - _DetailNormalMapScale: 1
@@ -67,13 +67,13 @@ Material:
     - _Mode: 0
     - _OcclusionStrength: 1
     - _Parallax: 0.02
-    - _ScaleX: 1
-    - _ScaleY: 1
+    - _ScaleX: 1.1
+    - _ScaleY: 0.9
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
     - _SrcBlend: 1
-    - _TranslateX: 1
-    - _TranslateY: 1
+    - _TranslateX: 1.4
+    - _TranslateY: 1.2
     - _UVSec: 0
     - _ZWrite: 1
     m_Colors:

@@ -1,4 +1,4 @@
-﻿Shader "CK/SimpleVertex"
+﻿Shader "CK/Vertex/SimpleVertex"
 {
 	SubShader
 	{

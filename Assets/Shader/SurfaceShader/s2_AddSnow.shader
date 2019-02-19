@@ -1,4 +1,4 @@
-﻿Shader "CK/AddSnow"
+﻿Shader "CK/Surface/AddSnow"
 {
 	Properties
 	{

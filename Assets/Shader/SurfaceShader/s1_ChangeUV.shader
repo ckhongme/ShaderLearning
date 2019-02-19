@@ -1,4 +1,4 @@
-﻿Shader "CK/ChangeUV"
+﻿Shader "CK/Surface/ChangeUV"
 {
 	Properties
 	{
