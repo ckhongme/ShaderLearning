@@ -54,7 +54,7 @@
 			o.Albedo = color.rgb;
 		}
 
-	ENDCG
+		ENDCG
 	}
 
 	Fallback "Diffuse"
