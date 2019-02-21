@@ -16,7 +16,6 @@
 
 	SubShader
 	{
-
 		Tags { "RenderType" = "Opaque" }
 		LOD 200
 
@@ -38,8 +37,8 @@
 		
 		void surf(Input IN, inout SurfaceOutput o)
 		{
-			//缩放uv
 			float2 uv = IN.uv_MainTex;
+			//缩放uv
 			uv = float2(uv.x * _ScaleX + _TranslateX, uv.y * _ScaleY + _TranslateY);
 
 			//以纹理中心为旋转中心

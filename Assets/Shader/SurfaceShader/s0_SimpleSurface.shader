@@ -15,9 +15,7 @@
        
 	   void surf (Input IN, inout SurfaceOutput o)
 	   {
-           o.Albedo = 1;
-           if (IN.worldPos.y > 1)
-                o.Albedo = 2;
+           o.Albedo = float3(0.5,0.2,0.3);
        }
        ENDCG
    }
