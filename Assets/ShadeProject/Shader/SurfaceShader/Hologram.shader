@@ -1,4 +1,4 @@
-﻿Shader "Dexmo/Hologram" 
+﻿Shader "CK/Surface/Hologram" 
 {
 	Properties
 	{

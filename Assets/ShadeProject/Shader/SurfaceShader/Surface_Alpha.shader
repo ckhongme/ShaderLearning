@@ -1,4 +1,4 @@
-﻿Shader "CK/Surface_Alpha"
+﻿Shader "CK/Surface/Surface_Alpha"
 {
 	Properties
 	{

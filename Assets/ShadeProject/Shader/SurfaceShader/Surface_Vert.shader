@@ -1,4 +1,4 @@
-﻿Shader "CK/Surface_Vert"
+﻿Shader "CK/Surface/Surface_Vert"
 {
 	Properties
 	{

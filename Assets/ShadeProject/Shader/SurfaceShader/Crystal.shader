@@ -1,4 +1,4 @@
-﻿Shader "Dexmo/Crystal"
+﻿Shader "CK/Surface/Crystal"
 {
 	Properties
 	{

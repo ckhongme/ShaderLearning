@@ -9,14 +9,17 @@
 		//_Params("Params", Float) = (0.2, 0.5, 0, 0)
 	}
 
-		SubShader
+	SubShader
 	{
 		Tags { "Queue" = "Transparent" "IgnoreProjector" = "True" "RenderType" = "Transparent" }
+		LOD 200
 
-		//Blend SrcAlpha One
-		//Cull Off
+		Cull Off		//关闭背面裁剪（半透时需要看到背面）
+		ZWrite Off		//关闭深度缓存写入（不遮挡其他东西时需要关闭）
+		ZTest On		//打开深度测试（需要被其他物体遮挡时需要打开）
+		Blend SrcAlpha One
+
 		//Lighting Off
-		//ZWrite Off
 
 		Pass
 		{
@@ -34,7 +37,7 @@
 			{
 				float4 position: POSITION;		//顶点坐标
 				float4 normal: NORMAL;			//法线方向
-				float2 texcoord: TEXCOORD0;		//纹理坐标
+				float2 texcoord: TEXCOORD0;		//纹理坐标  (常用的是2维的普通纹理贴图，uv分别存在texcoord.xy中）
 				float4 color: COLOR;
 			};
 
