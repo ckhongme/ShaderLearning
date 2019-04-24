@@ -10,7 +10,7 @@ Shader "CK/Vertex/Distort"
 
 	SubShader
 	{
-		Tags { "RenderType"="Opaque" }
+		Tags { "RenderType"="Transparent" "Queue" = "Transparent"}
 		LOD 100
 
 		ZWrite Off
