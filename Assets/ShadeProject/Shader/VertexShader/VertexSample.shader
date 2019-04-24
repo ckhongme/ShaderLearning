@@ -33,9 +33,9 @@
 			half _Speed;
 			float4 _MainTex_ST;
 
-			struct a2v
+			struct appdata
 			{
-				float4 position: POSITION;		//顶点坐标
+				float4 vertex: POSITION;		//顶点坐标
 				float4 normal: NORMAL;			//法线方向
 				float2 texcoord: TEXCOORD0;		//纹理坐标  (常用的是2维的普通纹理贴图，uv分别存在texcoord.xy中）
 				float4 color: COLOR;
@@ -48,11 +48,11 @@
 				float2 texcoord : TEXCOORD0;
 			};
 
-			v2f vert (a2v v)
+			v2f vert (appdata v)
 			{
 				v2f o;
 				o.color = v.color;
-				o.pos = UnityObjectToClipPos(v.position);		//顶点转换函数： 变换到齐次坐标系； 代替：mul(UNITY_MATRIX_MVP,*)
+				o.pos = UnityObjectToClipPos(v.vertex);		//顶点转换函数： 变换到齐次坐标系； 代替：mul(UNITY_MATRIX_MVP,*)
 				o.texcoord = TRANSFORM_TEX(v.texcoord, _MainTex);
 				return o;
 			}

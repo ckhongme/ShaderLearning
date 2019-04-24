@@ -6,8 +6,8 @@ Material:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: ForceField
-  m_Shader: {fileID: 4800000, guid: 19ee70e523093154f93a04d55a92052b, type: 3}
+  m_Name: Grab
+  m_Shader: {fileID: 4800000, guid: f0c23790d7d6dc44c98760352e5a8814, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
@@ -62,7 +62,7 @@ Material:
     - _BumpScale: 1
     - _Cutoff: 0.5
     - _DetailNormalMapScale: 1
-    - _DistortStrength: 0.038
+    - _DistortStrength: 0.01
     - _DistortTimeFactor: 0.361
     - _DstBlend: 0
     - _GlossMapScale: 1
