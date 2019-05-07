@@ -266,7 +266,8 @@ MeshFilter:
 --- !u!1 &739293476
 GameObject:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
+  m_PrefabParentObject: {fileID: 1045287880659280, guid: 0bf4cd7ea33056b42b50329efd0b5baf,
+    type: 2}
   m_PrefabInternal: {fileID: 0}
   serializedVersion: 5
   m_Component:
@@ -280,15 +281,16 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &739293477
 Transform:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
+  m_PrefabParentObject: {fileID: 4818683352319482, guid: 0bf4cd7ea33056b42b50329efd0b5baf,
+    type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 739293476}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.011, y: 0.107, z: 0.345}
+  m_LocalPosition: {x: 0.011, y: 0.107, z: 0.356}
   m_LocalScale: {x: 0.3, y: 0.3, z: 0.3}
   m_Children: []
   m_Father: {fileID: 1886941941}
@@ -297,7 +299,8 @@ Transform:
 --- !u!23 &739293478
 MeshRenderer:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
+  m_PrefabParentObject: {fileID: 23786892484802800, guid: 0bf4cd7ea33056b42b50329efd0b5baf,
+    type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 739293476}
   m_Enabled: 1
@@ -331,7 +334,8 @@ MeshRenderer:
 --- !u!135 &739293479
 SphereCollider:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
+  m_PrefabParentObject: {fileID: 135244365413236194, guid: 0bf4cd7ea33056b42b50329efd0b5baf,
+    type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 739293476}
   m_Material: {fileID: 0}
@@ -343,7 +347,8 @@ SphereCollider:
 --- !u!33 &739293480
 MeshFilter:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
+  m_PrefabParentObject: {fileID: 33230406286474810, guid: 0bf4cd7ea33056b42b50329efd0b5baf,
+    type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 739293476}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
@@ -445,7 +450,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!23 &1202107305
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -714,13 +719,13 @@ MeshFilter:
 --- !u!1 &1886941937
 GameObject:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
+  m_PrefabParentObject: {fileID: 1279273982154284, guid: 0bf4cd7ea33056b42b50329efd0b5baf,
+    type: 2}
   m_PrefabInternal: {fileID: 0}
   serializedVersion: 5
   m_Component:
   - component: {fileID: 1886941941}
   - component: {fileID: 1886941940}
-  - component: {fileID: 1886941939}
   - component: {fileID: 1886941938}
   m_Layer: 0
   m_Name: ForceField
@@ -732,7 +737,8 @@ GameObject:
 --- !u!23 &1886941938
 MeshRenderer:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
+  m_PrefabParentObject: {fileID: 23640250250891928, guid: 0bf4cd7ea33056b42b50329efd0b5baf,
+    type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1886941937}
   m_Enabled: 1
@@ -763,29 +769,19 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!135 &1886941939
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1886941937}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!33 &1886941940
 MeshFilter:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
+  m_PrefabParentObject: {fileID: 33600163554103158, guid: 0bf4cd7ea33056b42b50329efd0b5baf,
+    type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1886941937}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!4 &1886941941
 Transform:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
+  m_PrefabParentObject: {fileID: 4952289672853756, guid: 0bf4cd7ea33056b42b50329efd0b5baf,
+    type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1886941937}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
