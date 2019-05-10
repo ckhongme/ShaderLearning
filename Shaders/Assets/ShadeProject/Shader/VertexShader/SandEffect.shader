@@ -1,10 +1,11 @@
-﻿Shader "chenjd/geomShader"
+﻿Shader "CK/Vertex/SandEffect"
 {
 	Properties
 	{
 		_MainTex ("Texture", 2D) = "white" {}
 		_Speed("Speed", Float) = 1
 		_AccelerationValue("AccelerationValue", Float) = 10
+		_SandSpeed("SandSpeed", Float) = 0.4           // 沙粒化速度
 	}
 	SubShader
 	{
@@ -43,6 +44,8 @@
 			float _Speed;
 			float _AccelerationValue;
 			float _StartTime;
+			float4 _SandSpeed;
+			float _FloorY;
 			
 			v2g vert (appdata v)
 			{
@@ -59,16 +62,29 @@
 
 				float3 v1 = IN[1].vertex - IN[0].vertex;
 				float3 v2 = IN[2].vertex - IN[0].vertex;
-
-				float3 norm = normalize(cross(v1, v2));
+				float3 normal = normalize(cross(v1, v2));
 
 				float3 tempPos = (IN[0].vertex + IN[1].vertex + IN[2].vertex) / 3;
-
 				float realTime = _Time.y - _StartTime;
-				tempPos += norm * (_Speed * realTime + .5 * _AccelerationValue * pow(realTime, 2));
+
+				// 修改
+				float3 worldPos = mul(unity_ObjectToWorld, tempPos).xyz;        // 获取顶点的世界坐标
+				worldPos.y -= _Speed * realTime + .5 * _AccelerationValue * pow(realTime, 2);
+
+				if (_FloorY < worldPos.y)
+				{
+					tempPos -= normal * (_SandSpeed * realTime);
+					worldPos = mul(unity_ObjectToWorld, tempPos).xyz;           // 再算一次顶点的世界坐标
+					worldPos.y -= _Speed * realTime + .5 * _AccelerationValue * pow(realTime, 2);
+				}
+				else
+				{
+					worldPos.y = max(_FloorY, worldPos.y);
+				}
+
+				tempPos = mul(unity_WorldToObject, worldPos).xyz;
 
 				o.vertex = UnityObjectToClipPos(tempPos);
-
 				o.uv = (IN[0].uv + IN[1].uv + IN[2].uv) / 3;
 
 				pointStream.Append(o);

@@ -1,10 +1,14 @@
-﻿Shader "chenjd/BunnyFurShader"
+﻿Shader "CK/Vertex/Explosion"
 {
 	Properties
 	{
 		_MainTex ("Texture", 2D) = "white" {}
-		_FurFactor("FurFactor", Range(0.01, 0.05)) = 0.02
+		_Speed("Speed", Float) = 1
+		_AccelerationValue("AccelerationValue", Float) = 10
+		_OutFactor("OutFactor", Range(0.01, 0.1)) = 0.05
+		_StayTime("StayTime", Range(1,10)) = 2
 	}
+
 	SubShader
 	{
 		Tags { "RenderType"="Opaque" }
@@ -43,7 +47,11 @@
 			sampler2D _MainTex;
 			float4 _MainTex_ST;
 
-			float _FurFactor;
+			float _OutFactor;
+			float _Speed;
+			float _AccelerationValue;
+			float _StartTime;
+			float _StayTime;
 			
 			v2g vert(appdata_base v)
 			{
@@ -54,47 +62,67 @@
 				return o;
 			}
 
-			[maxvertexcount(9)]
+			[maxvertexcount(12)]
 			void geom(triangle v2g IN[3], inout TriangleStream<g2f> tristream)
 			{
 				g2f o;
-
-				float3 edgeA = IN[1].vertex - IN[0].vertex;
-				float3 edgeB = IN[2].vertex - IN[0].vertex;
-				float3 normalFace = normalize(cross(edgeA, edgeB));
-
-				float3 centerPos = (IN[0].vertex + IN[1].vertex + IN[2].vertex) / 3;
-				float2 centerTex = (IN[0].uv + IN[1].uv + IN[2].uv) / 3;
-				centerPos += float4(normalFace, 0) * _FurFactor;
-
-				for (uint i = 0; i < 3; i++)
+				float realTime = _Time.y - _StartTime;
+				if (realTime < _StartTime)
 				{
-					o.vertex = UnityObjectToClipPos(IN[i].vertex);
-					o.uv = IN[i].uv;
-					o.col = fixed4(0., 0., 0., 1.);
+					float3 edgeA = IN[1].vertex - IN[0].vertex;
+					float3 edgeB = IN[2].vertex - IN[0].vertex;
+					float3 normalFace = normalize(cross(edgeA, edgeB));
 
-					tristream.Append(o);
+					float3 centerPos = (IN[0].vertex + IN[1].vertex + IN[2].vertex) / 3;
+					float2 centerTex = (IN[0].uv + IN[1].uv + IN[2].uv) / 3;
+					centerPos -= float4(normalFace, 0) * _OutFactor;
+				
+					float3 moveVector = float3(0, 0, 0);
+					moveVector = normalFace * (_Speed * realTime + .5 * _AccelerationValue * pow(realTime, 2));
 
-					uint index = (i + 1) % 3;
-					o.vertex = UnityObjectToClipPos(IN[index].vertex);
-					o.uv = IN[index].uv;
-					o.col = fixed4(0., 0., 0., 1.);
-
-					tristream.Append(o);
-
-					o.vertex = UnityObjectToClipPos(float4(centerPos, 1));
-					o.uv = centerTex;
+					o.vertex = UnityObjectToClipPos(IN[2].vertex + moveVector);
+					o.uv = IN[2].uv;
 					o.col = fixed4(1.0, 1.0, 1.0, 1.);
+					tristream.Append(o);
 
+					o.vertex = UnityObjectToClipPos(IN[1].vertex + moveVector);
+					o.uv = IN[1].uv;
+					o.col = fixed4(1.0, 1.0, 1.0, 1.);
+					tristream.Append(o);
+
+					o.vertex = UnityObjectToClipPos(IN[0].vertex + moveVector);
+					o.uv = IN[0].uv;
+					o.col = fixed4(1.0, 1.0, 1.0, 1.);
 					tristream.Append(o);
 
 					tristream.RestartStrip();
+
+					for (uint i = 0; i < 3; i++)
+					{
+						o.vertex = UnityObjectToClipPos(IN[i].vertex + moveVector);
+						o.uv = IN[i].uv;
+						o.col = fixed4(0., 0., 0., 1.);
+						tristream.Append(o);
+
+						uint index = (i + 1) % 3;
+						o.vertex = UnityObjectToClipPos(IN[index].vertex + moveVector);
+						o.uv = IN[index].uv;
+						o.col = fixed4(0., 0., 0., 1.);
+						tristream.Append(o);
+
+						o.vertex = UnityObjectToClipPos(float4(centerPos, 1) + moveVector);
+						o.uv = centerTex;
+						o.col = fixed4(1.0, 1.0, 1.0, 1.);
+						tristream.Append(o);
+
+						tristream.RestartStrip();
+					}
 				}
 			}
-
 			
 			fixed4 frag (g2f i) : SV_Target
 			{
+				float realTime = _Time.y - _StartTime;
 				fixed4 col = tex2D(_MainTex, i.uv) * i.col;
 				return col;
 			}
