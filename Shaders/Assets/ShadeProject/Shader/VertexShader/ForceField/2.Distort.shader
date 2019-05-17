@@ -3,7 +3,7 @@ Shader "CK/Vertex/Distort"
 {
 	Properties
 	{
-		_NoiseTex("Noise Texture", 2D) = "white" {}		//噪声图，为了使uv的偏移变得随机
+		_NoiseTex("Noise Texture", 2D) = "white" {}						//噪声图，为了使uv的偏移变得随机
 		_DistortStrength("DistortStrength", Range(0, 0.2)) = 0.01		//扭曲强度
 		_DistortTimeFactor("DistortTimeFactor", Range(0,1)) = 0.2		//扭曲的事件系数（扭曲快慢）
 	}

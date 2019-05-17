@@ -11,13 +11,9 @@
 
 	SubShader
 	{
-		Tags { "Queue" = "Transparent" "IgnoreProjector" = "True" "RenderType" = "Transparent" }
+		Tags { "RenderType" = "Opaque" }
 		LOD 200
-
 		Cull Off		//关闭背面裁剪（半透时需要看到背面）
-		ZWrite Off		//关闭深度缓存写入（不遮挡其他东西时需要关闭）
-		ZTest On		//打开深度测试（需要被其他物体遮挡时需要打开）
-		Blend SrcAlpha One
 
 		//Lighting Off
 
