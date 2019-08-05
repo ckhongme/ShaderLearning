@@ -3,7 +3,7 @@ Shader "CK/VF/Dissolve"
 {
 	Properties
 	{
-		_MainTex("Main Texture", 2D) = "white" {}						//
+		_MainTex("Main Texture", 2D) = "white" {}						//主贴图
 		_DissolveTex("Dissolve Texture", 2D) = "white" {}				//溶解贴图（噪声图）
 		_DissolveTile("Dissolve Texture Tile", Range(0,1)) = 1			//溶解贴图的平铺系数
 		_DissolveStrength("Dissolve Strength", Range(0, 1)) = 0.5		//溶解强度
