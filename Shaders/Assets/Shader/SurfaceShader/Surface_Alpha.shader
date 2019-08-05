@@ -21,6 +21,7 @@
 		Tags { "RenderType"="Transparent" }
 		LOD 200
 
+
 		CGPROGRAM
 		
 		//如果需要模型透明，必须加可选参数 alpha
