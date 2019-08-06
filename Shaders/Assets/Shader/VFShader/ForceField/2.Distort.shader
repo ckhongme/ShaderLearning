@@ -1,5 +1,5 @@
 ﻿//扭曲
-Shader "CK/Vertex/Distort"
+Shader "CK/VF/Distort"
 {
 	Properties
 	{

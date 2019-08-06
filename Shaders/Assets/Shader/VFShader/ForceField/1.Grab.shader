@@ -1,5 +1,5 @@
 ﻿//抓屏
-Shader "CK/Vertex/Grab"
+Shader "CK/VF/Grab"
 {
 	SubShader
 	{

@@ -1,4 +1,4 @@
-﻿Shader "CK/Vertex/ForceField"
+﻿Shader "CK/VF/ForceField"
 {
 	Properties
 	{

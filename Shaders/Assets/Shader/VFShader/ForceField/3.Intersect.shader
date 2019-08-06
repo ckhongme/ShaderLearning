@@ -1,5 +1,5 @@
 ﻿//相交
-Shader "CK/Vertex/Intersect"
+Shader "CK/VF/Intersect"
 {
 	Properties
 	{
