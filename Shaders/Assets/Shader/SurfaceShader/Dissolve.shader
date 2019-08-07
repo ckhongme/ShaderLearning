@@ -21,9 +21,8 @@ Shader "CK/Surface/Dissolve"
 		
 		CGPROGRAM
 		#pragma target 3.0  
-		#pragma surface surf BlinnPhong alpha
+		#pragma surface surf BlinnPhong
 
-		//主贴图
 		sampler2D _MainTex, _DissolveTex;
 		float _DissolveTile, _DissolveStrength;
 		half _DissolveEdge, _RimPower;
@@ -32,13 +31,18 @@ Shader "CK/Surface/Dissolve"
 		struct Input
 		{
 			float2 uv_MainTex;
-			float2 uv_DissolveTex;
+			float4 color : COLOR;
+			float3 viewDir;
 		};
 
 		void surf(Input IN, inout SurfaceOutput o)
 		{
+			
 			// 对主材质进行采样  
 			fixed4 color = tex2D(_MainTex, IN.uv_MainTex);
+			o.Albedo = color.rgb;
+			o.Alpha = color.a;
+
 			float clipTexG = tex2D(_DissolveTex, IN.uv_MainTex / _DissolveTile).r;
 
 			if (_DissolveStrength > 0)
@@ -46,18 +50,17 @@ Shader "CK/Surface/Dissolve"
 				float clipAmount = clipTexG - _DissolveStrength;
 				if (clipAmount < 0)
 				{
-					discard; //裁剪
+					clip(-0.1);
 				}
 				else
 				{
 					if (clipAmount < _DissolveEdge)
 					{
 						float4 finalColor = lerp(_DissolveColor, _AddColor, clipAmount / _DissolveEdge) * _RimPower;
-						o.Albedo = color.rga * finalColor;
+						o.Albedo = (color * finalColor).rgb;
 					}
 				}
 			}
-			o.Alpha = color.a;
 		}
 		ENDCG
 	}
